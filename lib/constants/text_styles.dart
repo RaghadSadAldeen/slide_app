@@ -9,7 +9,6 @@ class AppTextStyles {
   );
   static const TextStyle profileName = TextStyle(
     fontSize: 18,
-    decoration: TextDecoration.underline,
     color: darkTeal,
   );
 
