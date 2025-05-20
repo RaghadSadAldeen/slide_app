@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:slide_app/screens/add_slide_screen.dart';
-import 'package:slide_app/screens/edit_profile_screen.dart'; // الصفحة الرئيسية
+import 'package:slide_app/screens/edit_profile_screen.dart';
+import 'package:slide_app/screens/profile_screen.dart'; // الصفحة الرئيسية
 
 void main() {
   runApp(const MyApp());
@@ -17,9 +18,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      // home: EditProfileScreen() , // أول صفحة بتفتح
-
-      home: const AddSlideScreen() , // أول صفحة بتفتح
+     home: EditProfileScreen() ,
+ //     home:ProfileScreen(),
+ //      home: const AddSlideScreen() ,
     );
   }
 }

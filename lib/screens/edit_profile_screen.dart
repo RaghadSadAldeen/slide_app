@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:slide_app/constants/colors.dart';
-import 'package:slide_app/widgets/profile_screen/textProfile.dart';
-import 'package:slide_app/widgets/profile_screen/EditableFields.dart'; // عدّل المسار حسب موقع الملف
+import 'package:slide_app/widgets/edit_profile_screen/edit_able_Fields.dart';
+import 'package:slide_app/widgets/edit_profile_screen/text_edit_profile.dart';
+import 'package:slide_app/screens/profile_screen.dart';
 
-class EditProfileScreen extends StatelessWidget {
+class EditProfileScreen extends StatefulWidget {
   const EditProfileScreen({super.key});
 
+  @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,18 +20,16 @@ class EditProfileScreen extends StatelessWidget {
         title: editProfileTitle,
         leading: IconButton(
           onPressed: () {
-            Navigator.pop(context);  // رجوع للشاشة السابقة
+            Navigator.pop(context);
           },
           icon: const Icon(Icons.arrow_back),
         ),
       ),
-
-
       body: SingleChildScrollView(
         child: Center(
           child: Container(
             padding: const EdgeInsets.all(16.0),
-            constraints: const BoxConstraints(maxWidth: 400), // أقصى عرض للصفحة
+            constraints: const BoxConstraints(maxWidth: 400),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -41,11 +45,10 @@ class EditProfileScreen extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      bottom: 8, right: 8,
+                      bottom: 8,
+                      right: 8,
                       child: GestureDetector(
-                        onTap: () {
-                          // هنا تضيف الكود لتعديل الصورة أو تفعيل الـ Firebase
-                        },
+                        onTap: () {},
                         child: Container(
                           decoration: BoxDecoration(
                             color: deepForestGreen,
@@ -56,22 +59,43 @@ class EditProfileScreen extends StatelessWidget {
                           child: const Icon(
                             Icons.camera_alt,
                             size: 20,
-                            color:whiteColor,
+                            color: whiteColor,
                           ),
                         ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 12), // مسافة بين الصورة والنص الأول
+                const SizedBox(height: 12),
                 Column(
-                  crossAxisAlignment: CrossAxisAlignment.center, // يخلي كل النصوص بالمنتصف أفقياً
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    nameprofile,
-                    emailProfile,
+                    nameEditProfile,
+                    EmailEditProfile,
                     const SizedBox(height: 5),
                     const SizedBox(height: 22),
-                    const EditableFields(), // الحقول تظل تأخذ العرض الكامل الممكن
+                    EditableFields(
+                      onSave: ({
+                        required String name,
+                        required String phone,
+                        required String address,
+                        required String email,
+                        required String major,
+                      }) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProfileScreen(
+                              name: name,
+                              phone: phone,
+                              address: address,
+                              email: email,
+                              major: major,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ],

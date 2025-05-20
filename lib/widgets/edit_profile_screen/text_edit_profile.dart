@@ -10,13 +10,13 @@ const Text editProfileTitle = Text(
   ),
 );
 
-const  Text nameprofile= Text(
+const  Text nameEditProfile= Text(
 'Raghad Sad aldeen',
 style: TextStyle(fontSize: 17.5, color: blackColor),
 textAlign: TextAlign.center, // تأكيد إن النص نفسه يتوسط داخل الـ Text widget
 );
 
-const Text emailProfile = Text(
+const Text EmailEditProfile = Text(
   'Razghad201@gmail.com',
   style: TextStyle(
     fontSize: 15.5,
